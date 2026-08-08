@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Goal & Time Tracker"
+description = "A responsive personal goal and time tracking app that stores goals, sessions, and progress locally in the browser."
+version = "1.0.0"
+id = "artifacts/goal-time-tracker"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18859
+
+[services.development]
+run = "pnpm --filter @workspace/goal-time-tracker run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/goal-time-tracker", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/goal-time-tracker/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18859"
+BASE_PATH = "/"
