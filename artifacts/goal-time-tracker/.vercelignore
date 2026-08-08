@@ -1,0 +1,7 @@
+src/**/*.server.ts 
+src/app.ts 
+src/server.ts 
+**/*.test.ts 
+**/*.spec.ts 
+node_modules 
+dist 
